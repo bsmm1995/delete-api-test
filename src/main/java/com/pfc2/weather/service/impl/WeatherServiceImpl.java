@@ -7,6 +7,7 @@ import com.pfc2.weather.service.WeatherService;
 import com.pfc2.weather.service.dto.ApiOpenWeatherMapRes;
 import com.pfc2.weather.service.dto.RequestWeather;
 import com.pfc2.weather.service.dto.ResponseWeather;
+import com.pfc2.weather.service.dto.WeatherHistoryDTO;
 import com.pfc2.weather.service.mapper.WeatherMapper;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -49,5 +51,12 @@ public class WeatherServiceImpl implements WeatherService {
             historyRepository.save(weatherHistory);
         }
         return WeatherMapper.INSTANCE.toResponseWeather(weatherHistory);
+    }
+
+    @Override
+    public List<WeatherHistoryDTO> getWeatherHistory() {
+        return historyRepository.findAll().stream()
+                .map(WeatherMapper.INSTANCE::toWeatherHistoryDTO)
+                .toList();
     }
 }
