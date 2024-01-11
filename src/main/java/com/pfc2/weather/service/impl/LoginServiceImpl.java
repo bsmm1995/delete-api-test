@@ -1,6 +1,6 @@
 package com.pfc2.weather.service.impl;
 
-import com.pfc2.weather.reporitory.TokenLoginClient;
+import com.pfc2.weather.reporitory.HttpClientsFactory;
 import com.pfc2.weather.service.LoginService;
 import com.pfc2.weather.service.dto.TokenRequest;
 import com.pfc2.weather.service.dto.TokenResponse;
@@ -11,20 +11,20 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class LoginServiceImpl implements LoginService {
-    private final TokenLoginClient tokenLoginClient;
+    private final HttpClientsFactory clientsFactory;
     private final TokenRequest tokenRequest;
 
-    public LoginServiceImpl(TokenLoginClient tokenLoginClient,
+    public LoginServiceImpl(HttpClientsFactory clientsFactory,
                             @Value("${app.secrets.oauth.client-id}") String clientId,
                             @Value("${app.secrets.oauth.client-secret}") String clientSecret,
                             @Value("${app.secrets.oauth.audience}") String audience,
                             @Value("${app.secrets.oauth.grant-type}") String grantType) {
-        this.tokenLoginClient = tokenLoginClient;
+        this.clientsFactory = clientsFactory;
         this.tokenRequest = new TokenRequest(clientId, clientSecret, audience, grantType);
     }
 
     @Override
     public TokenResponse generateToken() {
-        return tokenLoginClient.generateJwtToken(tokenRequest);
+        return clientsFactory.getTokenLoginClient().generateJwtToken(tokenRequest);
     }
 }

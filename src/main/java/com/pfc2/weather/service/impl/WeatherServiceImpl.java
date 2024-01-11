@@ -1,7 +1,7 @@
 package com.pfc2.weather.service.impl;
 
 import com.pfc2.weather.domain.WeatherHistory;
-import com.pfc2.weather.reporitory.OpenWeatherMapClient;
+import com.pfc2.weather.reporitory.HttpClientsFactory;
 import com.pfc2.weather.reporitory.WeatherHistoryRepository;
 import com.pfc2.weather.service.WeatherService;
 import com.pfc2.weather.service.dto.ApiOpenWeatherMapRes;
@@ -20,12 +20,12 @@ import java.util.List;
 @Slf4j
 @Service
 public class WeatherServiceImpl implements WeatherService {
-    private final OpenWeatherMapClient weatherMapApi;
+    private final HttpClientsFactory clientsFactory;
     private final WeatherHistoryRepository historyRepository;
     private final String appId;
 
-    public WeatherServiceImpl(OpenWeatherMapClient weatherMapApi, WeatherHistoryRepository historyRepository, @Value("${app.secrets.open-weather.app-id}") String appid) {
-        this.weatherMapApi = weatherMapApi;
+    public WeatherServiceImpl(HttpClientsFactory clientsFactory, WeatherHistoryRepository historyRepository, @Value("${app.secrets.open-weather.app-id}") String appid) {
+        this.clientsFactory = clientsFactory;
         this.historyRepository = historyRepository;
         this.appId = appid;
     }
@@ -45,7 +45,7 @@ public class WeatherServiceImpl implements WeatherService {
             }
         }
         if (weatherHistory == null) {
-            ApiOpenWeatherMapRes response = weatherMapApi.getCurrentWeatherData(data.lat(), data.lon(), appId);
+            ApiOpenWeatherMapRes response = clientsFactory.getOpenWeatherMapClient().getCurrentWeatherData(data.lat(), data.lon(), appId);
             log.info("Se consume API de tercero: {}", response);
             weatherHistory = WeatherMapper.INSTANCE.toWeatherHistory(response);
             historyRepository.save(weatherHistory);
