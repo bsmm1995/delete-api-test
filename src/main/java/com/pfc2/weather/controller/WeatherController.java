@@ -4,6 +4,7 @@ import com.pfc2.weather.service.WeatherService;
 import com.pfc2.weather.service.dto.RequestWeather;
 import com.pfc2.weather.service.dto.ResponseWeather;
 import com.pfc2.weather.service.dto.WeatherHistoryDTO;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class WeatherController {
     private final WeatherService weatherService;
 
     @PostMapping
-    ResponseEntity<ResponseWeather> getCurrentWeatherData(@RequestBody RequestWeather data) {
+    ResponseEntity<ResponseWeather> getCurrentWeatherData(@RequestBody @Valid RequestWeather data) {
         log.info("Endpoint to get Current Weather Data: {}", data);
         return ResponseEntity.ok(weatherService.getCurrentWeatherData(data));
     }
