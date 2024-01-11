@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: msa-pfc2-weather
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: msa-pfc2-weather
+  template:
+    metadata:
+      labels:
+        app: msa-pfc2-weather
+    spec:
+      containers:
+        - name: msa-pfc2-weather
+          image: bladiminga46/spring-boot-app:latest
+          ports:
+            - containerPort: 8080
