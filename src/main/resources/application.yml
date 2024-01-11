@@ -15,9 +15,6 @@ okta:
   oauth2:
     issuer: https://dev-110uie3k4jjd8cey.us.auth0.com/
     audience: localhost/api/v1/weather
-    client-id: JpuDQyqEAgLi5bShYQiOnnE3jSd5p2NS
-    client-secret: KXNirbKbgTy3qThwyNEou68ypm7aXvZWks9SlIRMbWSW9lDrjd38Kdso9ZTFuLJN
-    groups-claim: client_credentials
 
 services:
   open-weather-map: https://api.openweathermap.org/data/2.5/weather
