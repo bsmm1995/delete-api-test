@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(value = "openWeatherMap", url = "${services.open-weather-map}")
+@FeignClient(value = "openWeatherMapClient", url = "${services.open-weather-map}")
 public interface OpenWeatherMapClient {
     @GetMapping
     ApiOpenWeatherMapRes getCurrentWeatherData(@RequestParam Double lat, @RequestParam Double lon, @RequestParam String appid);
