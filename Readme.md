@@ -61,7 +61,26 @@ Autorization
 ### CREDENCIALES
 
 Las credenciales utilizadas para las diferentes conexiones se encuentran quemadas en las properties de esta solución.
-Igualmente esto por temas prácticos, ya que en un entorno real se debe usar variables de entorno.
+Igualmente esto por temas prácticos, ya que en un entorno real se debe utilizar variables de entorno.
+
+Variables utilizadas:
+
+oauth:
+
+- issuer: https://dev-110uie3k4jjd8cey.us.auth0.com/
+- audience: localhost/api/v1/weather
+- client-id: JpuDQyqEAgLi5bShYQiOnnE3jSd5p2NS
+- client-secret: KXNirbKbgTy3qThwyNEou68ypm7aXvZWks9SlIRMbWSW9lDrjd38Kdso9ZTFuLJN
+- grant-type: client_credentials
+
+open-weather:
+
+- app-id: ab9da5dbd643711d7007d938b2accf3a
+
+urls:
+
+- open-weather-map: https://api.openweathermap.org/data/2.5/weather
+- auth: https://dev-110uie3k4jjd8cey.us.auth0.com/oauth
 
 ### Recomendaciones
 
