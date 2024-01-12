@@ -26,6 +26,12 @@ Para la solución se utiliza únicamente la siguiente tabla SQL
 
 ![Descripción de la imagen](db-msa-pfc2-weather.png)
 
+### Test unitarios
+
+Se realizó test unitarios de los principales escenarios y se obtuvo éxito en todos como se muestra en la imagen adjunta
+
+![Descripción de la imagen](test.png)
+
 ### ¿Cómo funciona?
 
 Se generó y subió la siguiente imagen https://hub.docker.com/repository/docker/bladiminga46/spring-boot-app/general en
