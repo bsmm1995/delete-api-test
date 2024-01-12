@@ -18,12 +18,15 @@ public class OpenApiConfig {
                         addList("Bearer Authentication"))
                 .components(new Components().addSecuritySchemes
                         ("Bearer Authentication", createAPIKeyScheme()))
-                .info(new Info().title("My REST API")
-                        .description("Some custom description of API.")
-                        .version("1.0").contact(new Contact().name("Sallo Szrajbman")
-                                .email("www.baeldung.com").url("salloszraj@gmail.com"))
-                        .license(new License().name("License of API")
-                                .url("API license URL")));
+                .info(new Info().title("Weather API")
+                        .description("Weather API project.")
+                        .version("1.0").contact(new Contact()
+                                .name("BLadimir Minga")
+                                .email("bladiminga46@gmail.com")
+                                .url("https://github.com/bsmm1995"))
+                        .license(new License()
+                                .name("License of API")
+                                .url("https://choosealicense.com/licenses/mit/")));
     }
 
     private SecurityScheme createAPIKeyScheme() {
