@@ -14,7 +14,7 @@ La solución está diseñada bajo una arquitectura tradicional con lo siguiente:
 - Se usó singleton
 - DTO
 - Control global de excepciones
-- etc
+- etc.
 
 También en esta solución se integra con una DB en memoria para poder cumplir con los requisitos planteados
 
